@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- Primary Meta Tags -->
+<title>
+    ISC Dashboard | CR. QMS
+</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title" content="Pixel - Free Bootstrap 5 UI Kit">
+<meta name="author" content="Themesberg">
+<meta name="description" content="Open source and free Bootstrap 5 UI Kit featuring 80 UI components, 5 example pages, and a Gulp and Sass workflow.">
+<!-- <link rel="canonical" href="https://appseed.us/apps/flask-apps/flask-pixel-bootstrap-uikit"> -->
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<!-- <meta property="og:url" content="https://demo.themesberg.com/pixel-bootstrap-5-ui-kit"> -->
+<meta property="og:title" content="Pixel - Free Bootstrap 5 UI Kit">
+<meta property="og:description" content="Open source and free Bootstrap 5 UI Kit featuring 80 UI components, 5 example pages, and a Gulp and Sass workflow.">
+<meta property="og:image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/pixel-lite/pixel-lite-preview.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<!-- <meta property="twitter:url" content="https://demo.themesberg.com/pixel-bootstrap-5-ui-kit"> -->
+<meta property="twitter:title" content="Pixel - Free Bootstrap 5 UI Kit">
+<meta property="twitter:description" content="Open source and free Bootstrap 5 UI Kit featuring 80 UI components, 5 example pages, and a Gulp and Sass workflow.">
+<!-- <meta property="twitter:image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/pixel-lite/pixel-lite-preview.jpg"> -->
+
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="120x120" href="{{url_for('static', filename='/assets/img/favicon/apple-touch-icon.png')}}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='/assets/img/favicon/favicon-32x32.png')}}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='/assets/img/favicon/favicon-16x16.png')}}">
+<link rel="manifest" href="{{url_for('static', filename='/assets/img/favicon/site.webmanifest')}}">
+<link rel="mask-icon" href="{{url_for('static', filename='/assets/img/favicon/safari-pinned-tab.svg')}}" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+<!-- Fontawesome -->
+<link type="text/css" href="{{url_for('static', filename='/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
+
+<!-- Pixel CSS -->
+<link type="text/css" href="{{url_for('static', filename='/assets/css/pixel.css')}}" rel="stylesheet">
+
+</head>
+<body>
+    
+    {% include 'includes/navigation.html' %}
+
+    <main>
+
+        <!-- {% include 'includes/preloader.html' %} -->
+
+
+        <!-- Hero -->
+        <section class="section-header bg-secondary text-white">
+            <div class="container">
+               <div class="row justify-content-between align-items-center">
+                    <div class="col-12 col-md-5 d-none d-md-block text-center"><img src="{{url_for('static', filename='/assets/img/illustrations/project.svg')}}" alt=""></div>
+                    <div class="col-12 col-md-7 col-lg-6 text-center text-md-left">
+                        <h1 class="display-2 mb-4">Upload File<br class="d-none d-md-inline">Excel (.xslx)</h1>
+                        <p class="lead mb-4 text-muted">Upload file dengan format<br>yang sudah ditetapkan!.</p>
+                        <!-- <a href="#request" class="btn btn-tertiary mb-3 mt-2 me-2 me-md-3 animate-up-2"><span
+                            class="fas fa-th-large me-2"></span> <span class="d-none d-md-inline">Request Now</span></a> -->
+                        <button type="button" class="btn btn-tertiary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Upload Shopee <span class="ms-1"><span class="fas fa-upload "></span></span>
+                        </button>
+                        <button type="button" class="btn btn-tertiary" data-bs-toggle="modal" data-bs-target="#ModalTokopedia">
+                            Upload Tokped <span class="ms-1"><span class="fas fa-upload "></span></span>
+                        </button>
+                    </div>
+                </div>
+                <!-- FLASH -->
+                <div>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                    {% if category == 'success' %}
+                    <div class="alert alert-success alert-dismissable" role="alert">
+                        {{message}}
+                        <button style="float: right;" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-warning alert-dismissable" role="alert">
+                        {{message}}
+                        <button style="float: right;" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                </div>
+                <!-- END FLASH -->
+            </div>
+            
+    
+            <figure class="position-absolute bottom-0 left-0 w-100 d-none d-md-block mb-n2">
+               <svg class="fill-white" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1920 43.4" style="enable-background:new 0 0 1920 43.4;" xml:space="preserve">
+                  <path d="M0,23.3c0,0,405.1-43.5,697.6,0c316.5,1.5,108.9-2.6,480.4-14.1c0,0,139-12.2,458.7,14.3 c0,0,67.8,19.2,283.3-22.7v35.1H0V23.3z"></path>
+               </svg>
+            </figure>
+        </section>
+        <!-- End of Hero section -->
+
+        <!-- Modal Shopee-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="upload-shopee-tokopedia" method="POST" enctype="multipart/form-data">
+                        <div class="col-6 col-xl-6">
+                            <input type="text" class="form-control" name="olshop" value="SHOPEE" hidden>
+                            <div class="mb-4">
+                                <label for="exampleInputEmail6">Tahun Pelaporan</label>
+                                <select name="tahun_pelaporan" class="form-control" style='width: 227px;' required>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-xl-6">
+                            <div class="mb-4">
+                                <label for="exampleInputEmail6">Bulan Pelaporan</label>
+                                <select name="bulan_pelaporan" class="form-control" style='width: 227px;' required>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Upload File Shopee</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>        
+                        <div class="modal-body">        
+                            <div class="form-group">
+                                <p><input type="file" name="upload_excel" required></p>
+                            </div>        
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--End of Modal Shopee-->
+
+        <!-- Modal Tokopedia-->
+        <div class="modal fade" id="ModalTokopedia" tabindex="-1" aria-labelledby="ModalTokopediaLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="upload-shopee-tokopedia" method="POST" enctype="multipart/form-data">
+                        <div class="col-6 col-xl-6">
+                            <div class="mb-4">
+                                <input type="text" class="form-control" name="olshop" value="TOKOPEDIA" hidden>
+                                <label for="exampleInputEmail6">Tahun Pelaporan</label>
+                                <select name="tahun_pelaporan" class="form-control" style='width: 227px;' required>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-xl-6">
+                            <div class="mb-4">
+                                <select name="bulan_pelaporan" class="form-control" style='width: 227px;' required>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalTokopediaLabel">Upload File Tokopedia</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>        
+                        <div class="modal-body">        
+                            <div class="form-group">
+                                <p><input type="file" name="upload_excel" required></p>
+                            </div>        
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--End of Modal Tokopedia-->
+
+        <section class="section section-md ">
+            <div class="container">
+                <!-- SCRIPTS UNTUK TAB -->
+                <script src="{{ url_for('static', filename='assets/js/jquery-3-6-0.min.js') }}"></script>
+                <script src="{{ url_for('static', filename='assets/js/bootstrap-3-4-1.min.js') }}"></script>
+                <!-- END OF SCRIPTS UNTUK TAB -->
+                <form action="read-excel-shopee-tokopedia" method="POST" enctype="multipart/form-data">
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-6 col-xl-6">
+                            <div class="mb-4">
+                                <label for="exampleInputEmail6">Tahun Pelaporan</label>
+                                    <select name="tahun_pelaporan" class="form-control" style='width: 227px;' required>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                        <option value="2026">2026</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-xl-6">
+                            <div class="mb-4">
+                                <label for="exampleInputEmail6">Bulan Pelaporan</label>
+                                    <select name="bulan_pelaporan" class="form-control" style='width: 227px;' required>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-tertiary" type="submit">Cari
+                        <span class="ms-1"><span class="fas fa-search"></span></span>
+                    </button> 
+                </form>      
+            </div>
+        </section>
+        
+        <section class="section section-lg bg-secondary">
+            <div class="row justify-content-center text-white">
+        
+            </div>
+        </section>
+
+        
+        </div>
+        
+
+        
+    </main>
+
+    {% include 'includes/footer.html' %}
+
+    {% include 'includes/scripts.html' %}
+
+</body>
+</html>

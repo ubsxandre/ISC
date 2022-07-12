@@ -1,0 +1,93 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Complete Task {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <main>
+        
+        <!-- {% include 'includes/preloader.html' %} -->
+
+        <!-- Hero -->
+        <div class="section-header pb-6 bg-primary text-white">
+            <div class="container">
+                <h2 class="mb-4">Completed Project</h3>
+                <div class="row mt-4">
+                    <div class="col-6 col-xl-6">
+                        <div class="mb-4">
+                            <label for="exampleInputEmail6">Request Id</label>
+                            <input type="number" class="form-control" id="req-id">
+                        </div>
+                    </div>
+                    <div class="col-6 col-xl-6">
+                        <div class="mb-4">
+                            <label for="exampleInputEmail6">No. RAB</label>
+                            <input type="text" class="form-control" id="req-id">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-xl-6">
+                        <div class="mb-4">
+                            <label for="exampleInputEmail6">Start Date</label>
+                            <input type="date" class="form-control" id="req-id">
+                        </div>
+                    </div>
+                    <div class="col-6 col-xl-6">
+                        <div class="mb-4">
+                            <label for="exampleInputEmail6">End Date</label>
+                            <input type="date" class="form-control" id="req-id">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-tertiary" type="button">Cari
+                    <span class="ms-1"><span class="fas fa-search"></span></span>
+                </button>  
+            </div>
+        </div>
+        <!-- End of Hero -->
+        
+        <!--End of Title section-->
+            <div class="container">
+                <div class="row justify-content-center mt-4">
+                    <table class="table table-hover">
+                        <tr class="bg-primary text-white">
+                            <th>Request Id</th>
+                            <th>No. RAB</th>
+                            <th>Tanggal RAB</th>
+                            <th>Nama Project</th>
+                            <th>Departemen</th>
+                            <th>Total Anggaran</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>102740</td>
+                            <td>QMS/07-21/EK/018</td>
+                            <td>28/07/2021</td>
+                            <td>Cat Meja Mesin 3 Unit Rantai A</td>
+                            <td>Kalung</td>
+                            <td>1450550</td>
+                            <td><a href="view-completed-project" class="fas fa-eye"></a></td>
+                        </tr>
+                        <tr>
+                            <td>102735</td>
+                            <td>QMS/10-21/EK/014</td>
+                            <td>25/10/2021</td>
+                            <td>Pengecatan Mesin Kalung (3 Mesin) Rantai A</td>
+                            <td>Workshop</td>
+                            <td>880000</td>
+                            <td><a href="#" class="fas fa-eye"></a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+    </main>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

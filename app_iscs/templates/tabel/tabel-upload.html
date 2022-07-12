@@ -1,0 +1,234 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Tabel Upload Shopee dan Tokped {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <main>
+        
+        <!-- {% include 'includes/preloader.html' %} -->
+      
+        <!-- Hero -->
+        <div class="section-header pb-6 bg-primary text-white">
+            <div class="container">
+                <h2 class="mb-4">Data Upload Shopee dan Tokopedia</h3>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-6 col-xl-6">
+                        <div class="mb-4">
+                            <label for="exampleInputEmail6">Tahun</label>
+                            <input type="text" class="form-control" name="tahun_laporan" required>
+                        </div>
+                    </div>
+                    <div class="col-6 col-xl-6">
+                        <div class="mb-4">
+                            <label for="exampleInputEmail6">Bulan</label>
+                            <input type="text" class="form-control" name="bulan_laporan" required>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-tertiary" type="button">Cari
+                    <span class="ms-1"><span class="fas fa-search"></span></span>
+                </button>  
+                <button type="button" class="btn btn-tertiary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Upload Shopee <span class="ms-1"><span class="fas fa-upload "></span></span>
+                </button>
+                <button type="button" class="btn btn-tertiary" data-bs-toggle="modal" data-bs-target="#ModalTokopedia">
+                    Upload Tokped <span class="ms-1"><span class="fas fa-upload "></span></span>
+                </button>
+            </div>
+            <div style="margin: 0px 30px 0px 30px;">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-success alert-dismissable" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    {{message}}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+        <!-- End of Hero -->
+
+             
+        <!-- Modal Shopee-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="upload-shopee-tokopedia" method="POST" enctype="multipart/form-data">
+                        <div class="col-6 col-xl-6">
+                            <input type="text" class="form-control" name="olshop" value="SHOPEE" hidden>
+                            <div class="mb-4">
+                                <label for="exampleInputEmail6">Tahun Pelaporan</label>
+                                <select name="tahun_pelaporan" class="form-control" style='width: 227px;' required>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-xl-6">
+                            <div class="mb-4">
+                                <label for="exampleInputEmail6">Bulan Pelaporan</label>
+                                <select name="bulan_pelaporan" class="form-control" style='width: 227px;' required>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Upload File Shopee</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>        
+                        <div class="modal-body">        
+                            <div class="form-group">
+                                <p><input type="file" name="upload_excel"></p>
+                            </div>        
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--End of Modal Shopee-->
+
+        <!-- Modal Tokopedia-->
+        <div class="modal fade" id="ModalTokopedia" tabindex="-1" aria-labelledby="ModalTokopediaLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="upload-shopee-tokopedia" method="POST" enctype="multipart/form-data">
+                        <div class="col-6 col-xl-6">
+                            <div class="mb-4">
+                                <input type="text" class="form-control" name="olshop" value="TOKOPEDIA" hidden>
+                                <label for="exampleInputEmail6">Tahun Pelaporan</label>
+                                <select name="tahun_pelaporan" class="form-control" style='width: 227px;' required>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-xl-6">
+                            <div class="mb-4">
+                                <select name="bulan_pelaporan" class="form-control" style='width: 227px;' required>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalTokopediaLabel">Upload File Tokopedia</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>        
+                        <div class="modal-body">        
+                            <div class="form-group">
+                                <p><input type="file" name="upload_excel"></p>
+                            </div>        
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--End of Modal Tokopedia-->
+        
+        <!--End of Title section-->
+            <div class="container">
+                <div class="row justify-content-center mt-4">
+                    <table class="table table-hover">
+                        <tr class="bg-primary text-white">
+                            <th>id</th>
+                            <th>Marketplace</th>
+                            <th>Waktu Pesanan Dibuat</th>
+                            <th>Status Pesanan</th>
+                            <th>Nama Produk</th>
+                            <th>Nomer Referensi SKU</th>
+                            <th>Harga Awal</th>
+                            <th>Jumlah</th>
+                            <th>Username Pembeli</th>
+                            <th>Kota / Kab.</th>
+                            <th>Prov.</th>
+                            <th>Tanggal Upload</th>
+                            <th>Action</th>
+                        </tr>
+                        {% for row in data_tabel_upload %}
+                        <tr>
+                          <td>{{row.id}}</td>
+                          <td>{{row.olshop}}</td>
+                          <td>{{row.waktu_pesanan_dibuat}}</td>
+                          <td>{{row.status_pesanan}}</td>
+                          <td>{{row.nama_produk}}</td>
+                          <td>{{row.nomer_referensi_sku}}</td>
+                          <td>{{'%0.2f'|format(row.harga_awal|float)}}</td>
+                          <td>{{'%0.0f'|format(row.jumlah|float)}} </td>
+                          <td>{{row.username_pembeli}}</td>
+                          <td>{{row.kota_kabupaten}}</td>
+                          <td>{{row.provinsi}}</td>
+                          <td>{{row.created_date}}</td>
+                          <td><a href="add-survey" class="fas fa-paper-plane"></a></td>
+                        </tr>
+                        {% endfor %}
+                        <!-- <tr>
+                            <td>102735</td>
+                            <td>22/10/2021</td>
+                            <td>Pengecatan Mesin Kalung (3 Mesin) Rantai A</td>
+                            <td>Kalung</td>
+                            <td>Reguler</td>
+                            <td><span class="badge bg-primary">Selesai Survey</span></td>
+                            <td><a href="#" class="fas fa-paper-plane"></a></td>
+                        </tr>
+                        <tr>
+                            <td>103562</td>
+                            <td>30/10/2021</td>
+                            <td>Bongkar Pasang Sekat dan Buat Rak Dinding</td>
+                            <td>Kalung</td>
+                            <td></td>
+                            <td><span class="badge bg-danger">Belum Survey</span></td>
+                            <td><a href="add-survey" target="_blank" class="fas fa-paper-plane"></a></td>
+                        </tr> -->
+                    </table>
+                </div>
+            </div>
+
+    </main>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
