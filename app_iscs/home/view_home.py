@@ -3,7 +3,7 @@ from app_iscs.home import app_home, controller_home, model_home
 from jinja2 import TemplateNotFound
 from flask_login import login_user, login_required, current_user, logout_user
 from werkzeug.utils import secure_filename
-import os
+import os, asyncio
 from app_iscs import *
   
 @app_home.route('/home', methods=['POST', 'GET'])
@@ -18,15 +18,36 @@ def home():
 
 @app_home.route('/upload-shopee-tokopedia', methods=['POST', 'GET'])   # Reading data from CSV and save to mysql using sqlalchemy
 # Get the uploaded files
-def uploadShopeeTokopedia():
+async def uploadShopeeTokopedia():
+    v_tahun_pelaporan = request.form.get('tahun_pelaporan')
+    v_bulan_pelaporan = request.form.get('bulan_pelaporan')
+    v_olshop = request.form.get('olshop')
+    v_created_by = current_user.nama
+    # print('View v_tahun_pelaporan : ', request.form.get('tahun_pelaporan'))
+    # print('View v_bulan_pelaporan : ', request.form.get('bulan_pelaporan'))
+    # print('View v_olshop : ', request.form.get('olshop'))
     controller_home.uploadExcelShopeeTokopedia()
+    await asyncio.sleep(1)    
+    if v_olshop == 'SHOPEE':
+      print('View - insert shopee')
+      controller_home.insertDbExcelShopee(v_tahun_pelaporan, v_bulan_pelaporan, v_created_by)
+      return redirect(url_for('app_home.home')) 
+    elif v_olshop == 'TOKOPEDIA':
+      print('View - insert tokopedia')
+      controller_home.insertDbExcelTokopedia(v_tahun_pelaporan, v_bulan_pelaporan, v_created_by)
+      return redirect(url_for('app_home.home'))
+    else:
+      print('View - else')
     return redirect(url_for('app_home.home'))
   
-@app_home.route('/read-excel-shopee-tokopedia', methods=['POST', 'GET'])   # Reading data from CSV and save to mysql using sqlalchemy
-# Get the uploaded files
-def readExcelShopeeTokopedia():
-    controller_home.readExcelShopeeTokopedia()
-    return redirect(url_for('app_home.home'))
+@app_home.route('/dashboard', methods=['POST', 'GET'])   # Reading data from CSV and save to mysql using sqlalchemy
+def dashboard():
+  v_tahun_pelaporan = request.form.get('tahun_pelaporan')
+  v_bulan_pelaporan = request.form.get('bulan_pelaporan')
+  controller_home.readDbShopeeTokopedia(v_tahun_pelaporan, v_bulan_pelaporan)
+  # produk, perwaktu1, allcollabs = controller_home.readExcelShopeeTokopedia()
+  # print(produk, perwaktu1, allcollabs)
+  return redirect(url_for('app_home.home'))
   
 
 
