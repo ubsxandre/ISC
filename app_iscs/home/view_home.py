@@ -44,7 +44,8 @@ async def uploadShopeeTokopedia():
 def dashboard():
   v_tahun_pelaporan = request.form.get('tahun_pelaporan')
   v_bulan_pelaporan = request.form.get('bulan_pelaporan')
-  controller_home.readDbShopeeTokopedia(v_tahun_pelaporan, v_bulan_pelaporan)
+  if request.method == 'POST':
+    controller_home.readDbShopeeTokopedia(v_tahun_pelaporan, v_bulan_pelaporan)
   # produk, perwaktu1, allcollabs = controller_home.readExcelShopeeTokopedia()
   # print(produk, perwaktu1, allcollabs)
   return redirect(url_for('app_home.home'))

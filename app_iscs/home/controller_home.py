@@ -459,8 +459,10 @@ def readDbShopeeTokopedia(v_tahun_pelaporan, v_bulan_pelaporan):
   print(v_tahun_pelaporan, v_bulan_pelaporan)
   query_shopee = db.session.query(model_tabel.tabel_shopee_tokped).filter_by(tahun_pelaporan=v_tahun_pelaporan, bulan_pelaporan=v_bulan_pelaporan, status_aktif=1).statement
   df = pd.read_sql(sql=query_shopee, con=db.engine ) 
-    # Pie Chart
+    # PENJUALAN PRODUK - Pie Chart
   produk=df.groupby(['jenis_produk'])['jumlah'].sum().reset_index()
+  # fig = px.pie(produk, values='jumlah', names='jenis_produk', title='Persentase Penjualan ALL Produk',color_discrete_sequence=px.colors.sequential.RdBu)
+  # fig.show()
     # PEMBELIAN PRODUK LM DAN PERHIASAN BERDASARKAN PERIODE WAKTU
   perwaktu1=df.groupby(['kategori_waktu'])['jumlah'].sum().astype(int).reset_index()
     # PRODUK COLLABS
@@ -527,7 +529,7 @@ def readDbShopeeTokopedia(v_tahun_pelaporan, v_bulan_pelaporan):
   ratha = df[df['jenis_produk']=='Anting']
   ratha = ratha['harga_awal'].sum()/ratha['jumlah'].sum()
   # ratha = round(ratha)
-  print('ASDASDASDASD : ',ratha)
+  # print('ASDASDASDASD : ',ratha)
   
   return produk, perwaktu1, allcollabsperhiasanlm, repeatorder, alluser, ratha
   
